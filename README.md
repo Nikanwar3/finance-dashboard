@@ -1,114 +1,81 @@
-# FinTrack — Finance Dashboard UI
+# FinTrack — Finance Dashboard
 
-A clean, interactive finance dashboard built with **React + Vite + Tailwind CSS + Recharts**.
+A personal finance dashboard to track spending, visualize trends, and understand where your money goes. Built with React, Tailwind CSS, and Recharts.
+
+Live demo: https://finance-dashboard-cy38.onrender.com
 
 ---
 
-## Setup
+## Getting Started
 
 ```bash
-# Install dependencies
 npm install
-
-# Start dev server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+App runs at `http://localhost:5173`.
+
+```bash
+npm run build   # production build → dist/
+```
 
 ---
 
-## Features
+## What's Inside
 
-### Dashboard Overview
-- **Summary cards** — Total Balance, Income, Expenses, Net Savings with live calculations
-- **Balance Trend chart** — Area chart showing monthly Income / Expenses / Balance over 6 months (Recharts)
-- **Spending Breakdown** — Pie chart of expenses by category with colour-coded labels
-- **Recent Transactions** — 6 most recent entries with quick link to full list
+**Dashboard**
+Four summary cards (Balance, Income, Expenses, Savings) that update live based on transaction data. Below that, an area chart showing income vs expenses over 6 months, a pie chart breaking down spending by category, and a quick view of recent transactions.
 
-### Transactions
-- Full **sortable table** — click any column header to sort ascending/descending
-- **Search** by description or category
-- **Filter panel** — by type (income/expense), category, and date range
-- Active filter count badge; one-click clear all
-- **Export to CSV** — downloads filtered transactions as a `.csv` file
-- **Admin: Add / Edit / Delete** transactions via a modal form with validation
+**Transactions**
+A full table with sorting on every column, a search bar, and a filter panel (type, category, date range). A badge shows how many filters are active. There's also a CSV export that respects whatever filters you have applied.
 
-### Role-Based UI
-Toggle between **Viewer** and **Admin** using the header switcher:
-| Feature | Viewer | Admin |
-|---|---|---|
-| View dashboard, transactions, insights | ✅ | ✅ |
-| Add new transaction | ❌ | ✅ |
-| Edit / Delete transaction | ❌ | ✅ |
+Admin role unlocks Add, Edit, and Delete. The form has basic validation and opens in a modal.
 
-No backend required — role is managed in React context and persisted to `localStorage`.
+**Role-Based UI**
+Toggle between Viewer and Admin in the header. Viewer is read-only. Admin gets the full CRUD controls. Role persists across refreshes.
 
-### Insights
-- **Highest / Lowest spending category**
-- **Savings rate** with health indicator
-- **Most active month** (by transaction count)
-- **Average monthly expenses**
-- **Monthly comparison bar chart** — Income vs Expenses side-by-side per month
-- **Spending by category** horizontal bar chart with per-category colours
+**Insights**
+A few observations pulled from the data — top spending category, savings rate with a health indicator, most active month, average monthly expenses — plus a monthly comparison bar chart and a horizontal bar chart by category.
 
-### Dark Mode
-Click the sun/moon icon in the header. Preference persists across page reloads via `localStorage`.
-
-### Data Persistence
-Transactions, role selection, and dark mode preference are all saved to `localStorage` so state survives a page refresh.
+**Dark Mode + Persistence**
+Dark mode toggle in the header. Transactions, role, and theme are all saved to localStorage so nothing resets on refresh.
 
 ---
 
-## Tech Stack
+## Stack
 
-| Tool | Purpose |
-|---|---|
-| React 18 | UI framework |
-| Vite | Build tool & dev server |
-| Tailwind CSS v3 | Utility-first styling |
-| Recharts | Charts (Area, Pie, Bar) |
-| Lucide React | Icons |
-| React Context + useReducer | State management |
-| localStorage | Data persistence |
+- React 18 + Vite
+- Tailwind CSS v3
+- Recharts (Area, Pie, Bar)
+- Lucide React (icons)
+- React Context + useReducer
+- localStorage for persistence
 
 ---
 
-## Project Structure
+## Structure
 
 ```
 src/
 ├── components/
-│   ├── Dashboard/
-│   │   ├── DashboardView.jsx      # Composes all dashboard widgets
-│   │   ├── SummaryCards.jsx       # 4 KPI cards
-│   │   ├── BalanceTrend.jsx       # Area chart
-│   │   ├── SpendingBreakdown.jsx  # Pie chart
-│   │   └── RecentTransactions.jsx # Last 6 transactions
-│   ├── Transactions/
-│   │   ├── TransactionsView.jsx   # Full transactions table + filters
-│   │   └── TransactionForm.jsx    # Add/Edit modal form
-│   ├── Insights/
-│   │   └── InsightsView.jsx       # Insight cards + 2 charts
-│   └── Layout/
-│       ├── Sidebar.jsx            # Navigation sidebar
-│       └── Header.jsx             # Top bar (role switcher, dark mode)
+│   ├── Dashboard/       # SummaryCards, BalanceTrend, SpendingBreakdown, RecentTransactions
+│   ├── Transactions/    # TransactionsView (table + filters), TransactionForm (modal)
+│   ├── Insights/        # InsightsView (cards + charts)
+│   └── Layout/          # Sidebar, Header
 ├── context/
-│   └── AppContext.jsx             # Global state (useReducer + localStorage)
+│   └── AppContext.jsx   # Global state via useReducer, localStorage sync
 ├── data/
-│   └── mockData.js                # 60 sample transactions + chart data
-├── App.jsx                        # Root layout shell
-└── main.jsx                       # Entry point
+│   └── mockData.js      # 60 mock transactions (Jan–Jun 2025) + monthly chart data
+├── App.jsx
+└── main.jsx
 ```
 
 ---
 
-## Assumptions & Decisions
+## Notes
 
-- **No backend** — all data is mock/static with localStorage persistence
-- **Role switching** is a UI-only demonstration; no authentication
-- Monthly chart data uses a separate `MONTHLY_BALANCE_DATA` constant (pre-aggregated) to keep the chart smooth across the fixed 6-month window
-- The 60 mock transactions cover Jan–Jun 2025 to give the Insights section meaningful data out of the box
+The app ships with 60 mock transactions across Jan–Jun 2025 so the charts and insights have real data to work with from the start.
+
+The balance trend chart uses pre-aggregated monthly data rather than computing it live from transactions. This was intentional — the chart covers a fixed 6-month window and stays stable regardless of which transactions get added or deleted. The insights charts derive live from whatever transactions exist.
+
+No backend, no auth. Role switching is purely a UI simulation.
