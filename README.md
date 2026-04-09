@@ -2,7 +2,7 @@
 
 A personal finance dashboard to track spending, visualize trends, and understand where your money goes. Built with React, Tailwind CSS, and Recharts.
 
-Live demo: https://finance-dashboard-cy38.onrender.com
+Live demo: https://finance-dashboard-cy38.onrender.com.
 
 ---
 
