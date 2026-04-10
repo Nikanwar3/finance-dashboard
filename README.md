@@ -49,7 +49,7 @@ Dark mode toggle in the header. Transactions, role, and theme are all saved to l
 - Recharts (Area, Pie, Bar)
 - Lucide React (icons)
 - React Context + useReducer
-- localStorage for persistence
+- localStorage for persistence.
 
 ---
 
