@@ -78,4 +78,4 @@ The app ships with 60 mock transactions across Jan–Jun 2025 so the charts and 
 
 The balance trend chart uses pre-aggregated monthly data rather than computing it live from transactions. This was intentional — the chart covers a fixed 6-month window and stays stable regardless of which transactions get added or deleted. The insights charts derive live from whatever transactions exist.
 
-No backend, no auth. Role switching is purely a UI simulation.
+No backend, no auth. Role switching is purely a UI simulations
