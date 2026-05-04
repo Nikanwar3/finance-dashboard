@@ -24,7 +24,7 @@ npm run build   # production build → dist/
 ## What's Inside
 
 **Dashboard**
-Four summary cards (Balance, Income, Expenses, Savings) that update live based on transaction data. Below that, an area chart showing income vs expenses over 6 months, a pie chart breaking down spending by category, and a quick view of recent transactions.
+Four summary cards (Balance, Income, Expenses, Savings) that update live based on transaction data. Below that, an area chart showing income vs expenses over 6 months, a pie chart breaking down spending by category, and a quick view of recent all transactions.
 
 **Transactions**
 A full table with sorting on every column, a search bar, and a filter panel (type, category, date range). A badge shows how many filters are active. There's also a CSV export that respects whatever filters you have applied.
