@@ -65,7 +65,7 @@ src/
 ├── context/
 │   └── AppContext.jsx   # Global state via useReducer, localStorage sync
 ├── data/
-│   └── mockData.js      # 60 mock transactions (Jan–Jun 2025) + monthly chart data
+│   └── mockData.js      # 60 mock transactions (Jan–Jun 2025) + monthly charts data
 ├── App.jsx
 └── main.jsx
 ```
