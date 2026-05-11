@@ -29,7 +29,7 @@ Four summary cards (Balance, Income, Expenses, Savings) that update live based o
 **Transactions**
 A full table with sorting on every column, a search bar, and a filter panel (type, category, date range). A badge shows how many filters are active. There's also a CSV export that respects whatever filters you have applied.
 
-Admin role unlocks Add, Edit, and Delete. The form has basic validation and opens in a modal.
+Admin role unlocks Add, Edit, and Delete. The form has basic validations and opens in a modal.
 
 **Role-Based UI**
 Toggle between Viewer and Admin in the header. Viewer is read-only. Admin gets the full CRUD controls. Role persists across refreshes.
